@@ -24,7 +24,6 @@ public class BoardService {
         Board board = new Board(request.getTitle(), request.getContent(), user);
 
         Board saveBoard = boardRepository.save(board);
-
         return BoardResponse.builder()
                 .title(board.getTitle())
                 .content(board.getContent())
@@ -34,10 +33,8 @@ public class BoardService {
     }
 
         public BoardResponse getBoard(Integer id) {
-
             Board board = boardRepository.findById(id)
                     .orElseThrow(RuntimeException::new);
-
             return new BoardResponse(board.getTitle(), board.getContent(), board.getUser().getUsername());
 
     }
